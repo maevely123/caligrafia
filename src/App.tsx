@@ -10,7 +10,9 @@ import {
   Clock, 
   ShieldCheck, 
   MessageCircle,
-  Star
+  Star,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -27,6 +29,87 @@ const Button = ({ children, href = "#oferta", primary = true, className = "" }) 
     {children}
   </a>
 );
+
+const Carousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const images = [
+    "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777157248/8d88551811c54338ddd3e7f2dd72c400dy17pK7x5h3SNjfq-211_rtvocf.webp",
+    "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777157589/035d5785ba7642a68a95e8fb17849d31ajKZlyi9kWVGjuxh-21_h7ybym.webp",
+    "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777157710/035d5785ba7642a68a95e8fb17849d31ajKZlyi9kWVGjuxh-31_fve8qr.webp",
+    "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777157763/bfd126664c66485d9610364834c90030ncw0SgvZwjKKCTdV-21_en4zzx.webp",
+    "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777157796/bfd126664c66485d9610364834c90030ncw0SgvZwjKKCTdV-91_y77yy6.webp",
+    "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777157817/8d88551811c54338ddd3e7f2dd72c400dy17pK7x5h3SNjfq-31_ssyquz.webp"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+    }, 10000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+  };
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
+  return (
+    <div className="max-w-5xl mx-auto px-4 py-4">
+      <div className="relative w-full max-w-3xl mx-auto overflow-hidden rounded-2xl shadow-xl h-[500px] sm:h-[700px] md:h-[850px] bg-white border flex items-center justify-center">
+        <div 
+          className="flex transition-transform duration-500 ease-out h-full"
+          style={{ transform: `translateX(-${currentIndex * 100}%)`, width: `${images.length * 100}%` }}
+        >
+          {images.map((src, index) => (
+            <div key={index} className="w-full h-full flex-shrink-0 flex items-center justify-center p-0 sm:p-2">
+              <img 
+                src={src} 
+                alt={`Exemplo de atividade ${index + 1}`} 
+                className="w-full h-full object-contain rounded-xl"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Arrows */}
+        <button 
+          onClick={prevSlide}
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 text-gray-800 hover:bg-white shadow-lg transition-transform hover:scale-110"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button 
+          onClick={nextSlide}
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 text-gray-800 hover:bg-white shadow-lg transition-transform hover:scale-110"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+      </div>
+
+      {/* Indicators */}
+      <div className="flex justify-center gap-2 mt-6">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all ${
+              currentIndex === index ? "bg-green-500 w-6" : "bg-gray-300 hover:bg-gray-400"
+            }`}
+            aria-label={`Ir para a imagem ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function App() {
   const [timeLeft, setTimeLeft] = useState({ hours: 2, minutes: 45, seconds: 0 });
@@ -125,12 +208,13 @@ export default function App() {
                 </motion.div>
               ))}
             </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center bg-gray-100 min-h-[300px]">
-              {/* Placeholder for Mockup Image */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-pink-400/20 to-blue-400/20"></div>
-              <p className="text-gray-400 font-medium z-10 text-center px-6">
-                [Mockup de Criança Escrevendo / Cadernos de Atividades]
-              </p>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center bg-white">
+              <img 
+                src="https://res.cloudinary.com/dvg6hojfs/image/upload/v1777156588/ChatGPT_Image_25_de_abr._de_2026_19_36_12_ox0ior.png" 
+                alt="Cadernos de Atividades" 
+                className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500"
+                referrerPolicy="no-referrer"
+              />
             </div>
           </div>
         </div>
@@ -141,6 +225,17 @@ export default function App() {
         <h2 className="text-4xl md:text-5xl font-black italic tracking-wide">
           "Letra feia nunca mais."
         </h2>
+      </section>
+
+      {/* 3.5 EXEMPLOS DE ATIVIDADES */}
+      <section className="py-16 bg-white">
+        <div className="text-center mb-8 px-4">
+          <h2 className="text-3xl md:text-4xl font-bold bg-yellow-100 text-yellow-900 px-6 py-2 inline-block rounded-2xl transform -rotate-1">
+            Exemplos de Atividades
+          </h2>
+          <p className="text-gray-600 mt-4 text-lg">Confira algumas das páginas que seu filho vai praticar.</p>
+        </div>
+        <Carousel />
       </section>
 
       {/* 4. CONTEÚDO (MÓDULOS) */}
