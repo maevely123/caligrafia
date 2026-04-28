@@ -303,129 +303,156 @@ export default function App() {
       </section>
 
       {/* 6. OFERTA & ESCASSEZ */}
-      <section id="oferta" className="py-20 bg-gray-900 text-white relative">
+      <section id="oferta" className="py-20 bg-[#f8fcf8] text-gray-900 relative border-t-4 border-b-4 border-green-500/10">
         {/* Decorative background shape */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-10">
-          <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-pink-500 blur-[100px]"></div>
-          <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-green-500 blur-[100px]"></div>
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none opacity-40">
+          <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-yellow-300 blur-[80px]"></div>
+          <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] rounded-full bg-blue-300 blur-[80px]"></div>
+          <div className="absolute top-[40%] left-[50%] w-[30%] h-[30%] rounded-full bg-pink-300 blur-[100px]"></div>
         </div>
 
         <div className="max-w-5xl mx-auto px-4 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Escolha o melhor plano para seu filho</h2>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-800">
+              O futuro do seu filho a um clique
+            </h2>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Escolha o pacote ideal e transforme a escrita e a confiança da criança de forma leve e divertida!
+            </p>
             
-            <div className="inline-flex flex-col items-center justify-center bg-red-500/20 text-red-100 border border-red-500/30 px-6 py-3 rounded-2xl mb-4">
-              <span className="text-md font-semibold mb-1 uppercase tracking-wider text-red-200">Oferta por tempo limitado!</span>
-              <div className="font-mono text-2xl font-bold">
+            <div className="inline-flex flex-col items-center justify-center bg-red-50 text-red-600 border-2 border-red-200 px-6 py-3 rounded-2xl mb-4 shadow-sm">
+              <span className="text-sm font-bold mb-1 uppercase tracking-wider">⏱️ Oferta se encerra em breve!</span>
+              <div className="font-mono text-3xl font-black text-red-500">
                 {String(timeLeft.hours).padStart(2, '0')}:
                 {String(timeLeft.minutes).padStart(2, '0')}:
                 {String(timeLeft.seconds).padStart(2, '0')}
               </div>
-              <span className="text-xs text-red-300 mt-1">Garanta antes que o valor aumente</span>
+              <span className="text-xs text-red-400 mt-1 font-medium">Garanta o material antes que o valor aumente</span>
             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-center">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch focus-within:outline-none">
             
             {/* PLANO BÁSICO */}
-            <div className="bg-gray-800 rounded-3xl p-8 border border-gray-700 shadow-xl">
-              <div className="inline-block px-4 py-1 bg-gray-700 text-gray-300 rounded-full text-sm font-semibold mb-6">
-                PLANO BÁSICO
-              </div>
-              <div className="mb-2">
-                <span className="text-gray-400 line-through text-lg">de R$ 29,90</span>
-              </div>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-2xl font-bold text-gray-400">R$</span>
-                <span className="text-5xl font-bold">9,90</span>
+            <div className="bg-white rounded-[2rem] p-8 border-2 border-gray-100 shadow-xl flex flex-col justify-between transform md:translate-y-4">
+              <div>
+                <div className="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-bold mb-6 tracking-wide">
+                  PLANO INICIANTE
+                </div>
+                <div className="mb-1">
+                  <span className="text-gray-400 line-through text-lg font-medium">de R$ 19,90</span>
+                </div>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="text-2xl font-bold text-gray-400">por</span>
+                  <span className="text-2xl font-bold text-gray-800 ml-1">R$</span>
+                  <span className="text-6xl font-black text-gray-800">5,90</span>
+                </div>
+                
+                <p className="text-gray-500 mb-6 border-b border-gray-100 pb-6 text-lg">
+                  Ideal para começar e conhecer nossa metodologia principal.
+                </p>
+                
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-6 h-6 text-blue-500 flex-shrink-0" />
+                    <span className="text-gray-700 font-medium">Caderno de Caligrafia Cursiva</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-6 h-6 text-blue-500 flex-shrink-0" />
+                    <span className="text-gray-700 font-medium">Acesso imediato no WhatsApp</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-6 h-6 text-blue-500 flex-shrink-0" />
+                    <span className="text-gray-700 font-medium">Uso e impressão ilimitada</span>
+                  </li>
+                </ul>
               </div>
               
-              <p className="text-gray-400 mb-8 border-b border-gray-700 pb-8">
-                Ideal para começar e ver os primeiros resultados.
-              </p>
-              
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-gray-400 mt-0.5" />
-                  <span className="text-gray-300">Caderno de Caligrafia Cursiva</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-gray-400 mt-0.5" />
-                  <span className="text-gray-300">Acesso imediato via WhatsApp</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-gray-400 mt-0.5" />
-                  <span className="text-gray-300">Uso ilimitado</span>
-                </li>
-              </ul>
-              
-              <Button href="#" primary={false} className="w-full bg-white text-gray-900 hover:bg-gray-100 shadow-none border border-transparent">
-                COMEÇAR AGORA
-              </Button>
-              <p className="text-center text-sm text-gray-500 mt-4">Perfeito para quem quer melhorar a escrita rapidamente.</p>
+              <div>
+                <Button href="#" primary={false} className="w-full bg-blue-50 text-blue-700 hover:bg-blue-100 shadow-none border-2 border-blue-200">
+                  QUERO COMEÇAR
+                </Button>
+                <div className="mt-5 p-4 bg-yellow-50 rounded-xl border border-yellow-200 text-center relative pointer-events-none">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                    Dica de Ouro
+                  </div>
+                  <p className="text-sm text-yellow-800 font-medium pt-2">
+                    Quer o kit completo com todos os cadernos? <br/>
+                    <span className="md:hidden text-yellow-600 underline font-bold mt-1 inline-block">Role para baixo e veja a oferta Premium! 👇</span>
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* PLANO PREMIUM */}
-            <div className="bg-gradient-to-b from-green-500 to-green-600 rounded-3xl p-8 shadow-2xl shadow-green-500/20 transform md:-translate-y-4 relative border border-green-400">
-              <div className="absolute top-0 right-8 transform -translate-y-1/2">
-                <span className="bg-yellow-400 text-yellow-900 font-bold px-4 py-1 rounded-full text-sm shadow-md flex items-center gap-1">
-                  <Star className="w-4 h-4 fill-yellow-900" /> MAIS VENDIDO
+            <div className="bg-gradient-to-b from-green-400 to-green-600 rounded-[2rem] p-8 shadow-2xl shadow-green-500/40 transform md:-translate-y-2 relative border-[3px] border-green-300 flex flex-col justify-between overflow-visible">
+              <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-full text-center">
+                <span className="bg-yellow-400 text-yellow-900 font-black px-6 py-2 rounded-full text-sm shadow-lg flex items-center justify-center gap-2 max-w-[fit-content] mx-auto border-2 border-yellow-300 uppercase tracking-wide">
+                  <Star className="w-5 h-5 fill-yellow-900" /> A ESCOLHA Nº 1 DAS MÃES
                 </span>
               </div>
               
-              <div className="inline-block px-4 py-1 bg-green-400/30 text-white rounded-full text-sm font-semibold mb-6 border border-green-400/50">
-                PLANO PREMIUM
-              </div>
-              
-              <div className="mb-2">
-                <span className="text-green-200 line-through text-lg">de R$ 49,90</span>
-              </div>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-2xl font-bold text-green-100">R$</span>
-                <span className="text-6xl font-black text-white">19,90</span>
-              </div>
-              
-              <p className="text-green-100 mb-6 border-b border-green-400/50 pb-6 font-medium">
-                A experiência completa. Tudo que seu filho precisa.
-              </p>
-              
-              <div className="space-y-6 mb-8">
-                <div>
-                  <h4 className="font-bold text-white mb-3">Conteúdo Padrão:</h4>
-                  <ul className="space-y-3">
-                    {["Caderno do Alfabeto", "Caderno de Caligrafia Cursiva", "Caderno de Sílabas", "Produção de Texto", "Produção de Frases", "Coordenação Motora"].map((item, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-green-200 mt-0.5" />
-                        <span className="text-green-50 font-medium">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <div className="mt-4">
+                <div className="inline-block px-4 py-1.5 bg-green-800/30 text-white rounded-full text-sm font-bold mb-4 border border-green-300/30">
+                  PLANO COMPLETO
                 </div>
                 
-                <div className="bg-green-700/30 p-4 rounded-xl border border-green-400/30">
-                  <h4 className="font-bold text-yellow-400 mb-3 flex items-center gap-2">
-                    🎁 Bônus Exclusivos
-                  </h4>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <Star className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-green-50 text-sm">Suporte via WhatsApp</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Star className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-green-50 text-sm">Acesso vitalício</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Star className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-green-50 text-sm">Atualizações gratuitas</span>
-                    </li>
-                  </ul>
+                <div className="mb-1">
+                  <span className="text-green-200 line-through text-lg font-medium">de R$ 49,90</span>
+                </div>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="text-2xl font-bold text-green-100">por</span>
+                  <span className="text-2xl font-bold text-white ml-1">R$</span>
+                  <span className="text-7xl font-black text-white drop-shadow-sm">15,90</span>
+                </div>
+                
+                <p className="text-green-50 mb-6 border-b border-green-300/40 pb-6 font-medium text-lg">
+                  O kit absoluto de aprendizado. Todo o material necessário para transformar a letra do seu filho!
+                </p>
+                
+                <div className="space-y-6 mb-8">
+                  <div>
+                    <h4 className="font-bold text-white mb-3 text-lg">Leve todos os módulos:</h4>
+                    <ul className="space-y-3">
+                      {["Caderno do Alfabeto", "Caderno de Caligrafia Cursiva", "Caderno de Sílabas", "Produção de Texto", "Produção de Frases", "Coordenação Motora"].map((item, i) => (
+                        <li key={i} className="flex items-center gap-3 bg-green-500/20 p-2 rounded-lg border border-green-400/20">
+                          <CheckCircle2 className="w-5 h-5 text-yellow-300 flex-shrink-0" />
+                          <span className="text-white font-semibold">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-white/10 p-5 rounded-xl border border-white/20 backdrop-blur-sm">
+                    <h4 className="font-bold text-yellow-300 mb-3 flex items-center gap-2 text-lg">
+                      🎁 3 Super Bônus Grátis
+                    </h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-start gap-2">
+                        <Star className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
+                        <span className="text-green-50 font-medium">Suporte tira-dúvidas no WhatsApp</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Star className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
+                        <span className="text-green-50 font-medium">Acesso vitalício ao material</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Star className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
+                        <span className="text-green-50 font-medium">Todas as atualizações gratuitas</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
               
-              <Button href="#" primary={false} className="w-full bg-yellow-400 text-yellow-900 border-none shadow-xl shadow-yellow-500/30 hover:bg-yellow-300">
-                QUERO O COMPLETO
-              </Button>
+              <div>
+                <Button href="#" primary={false} className="w-full bg-yellow-400 text-yellow-900 border-none shadow-xl shadow-yellow-500/40 hover:bg-yellow-300 hover:scale-105 transition-transform text-lg py-5">
+                  QUERO O KIT COMPLETO
+                </Button>
+                <div className="flex items-center justify-center gap-2 mt-4 text-green-100 text-sm font-medium">
+                  <ShieldCheck className="w-4 h-4" /> Pagamento 100% Seguro
+                </div>
+              </div>
             </div>
             
           </div>
